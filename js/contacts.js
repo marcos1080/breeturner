@@ -13,6 +13,7 @@
 var slideSpeed = 300;
 var fullscreenOverlay = jQuery('<div class="overlay"></div>');
 
+
 /*******************************************************************************
 
 	Main, after page load.
@@ -24,6 +25,8 @@ jQuery(document).ready(function(){
 	openHandler();
 	// Add event handler to "Send" button.
 	addContactEventHandlers();
+	// Add loading icon element to form.
+	addProgressIcons();
 });
 
 /*******************************************************************************
@@ -71,8 +74,13 @@ function addContactEventHandlers() {
 	// Submit button clicked. Stop default action and replace with AJAX.
 	jQuery( '#contact-form form' ).submit(function(event) {
 		event.preventDefault();
+		
+		// Hide submit button and show loading icon.
+		jQuery('.wpcf7-submit').fadeOut(300, function() {
+			jQuery('.loading-icon').fadeIn(300);
+		});
+		
 		var url = location.protocol + '//' + location.host + jQuery(this).attr('action');
-
 		jQuery.post(
 			url,
 			jQuery(this).serialize(),
@@ -85,16 +93,18 @@ function addContactEventHandlers() {
 				newContactForm.find('.wpcf7-mail-sent-ok').text = '';
 				newContactForm.find('.wpcf7-mail-sent-ok').removeAttr('role');
 				newContactForm.find('.wpcf7-mail-sent-ok').hide();
-			
+		
 				// Replace the current form with the response form.
 				jQuery('#contact-form').empty().replaceWith(newContactForm);
 				newContactForm.show();
-			
+				// Add loading icon element to form.
+				addProgressIcons();
+		
 				// Set any error messages.
 				formatNewContactForm();
 				// Set event handlers for the new form.
 				addContactEventHandlers();
-				
+			
 				// Handle successful email.
 				if( newContactForm.find('.sent').length ) {
 					// Show alert
@@ -174,5 +184,25 @@ function showSuccessAlert() {
 		}, slideSpeed, function() {
 			fullscreenOverlay.empty().removeAttr( 'style' ).remove();
 		});
+	});
+	
+//	// Show the submit button.
+//	jQuery('.loading-icon').fadeOut(300, function() {
+//		jQuery('.wpcf7-submit').fadeIn(300);
+//	});
+}
+
+// Adds a loading icon div element to the send button. When the button is
+// clicked it fades and the progress button is shown.
+function addProgressIcons() {
+	var loadingIconUrl = jQuery('body').data('uri') + '/images/icons/loading.gif';
+	var loadingIcon = jQuery('<img class="loading-icon" src="' + loadingIconUrl + '" alt="Loading Icon">');
+	
+	loadingIcon.clone().appendTo('#submit-wide');
+	loadingIcon.clone().appendTo('#submit-thin');
+	
+	jQuery('.loading-icon').css({
+		'height': '36px',
+		'display': 'none'
 	});
 }
