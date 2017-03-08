@@ -31,9 +31,7 @@
       	}
       ?>
       <!-- Top bar, show if javascript enabled. -->
-      <?php
-      	$target_link = 'http://139.59.247.69/words/';
-      	
+      <?php      	
 		   if ( $_SESSION['javascript'] === true ) {
 		   	get_template_part( 'blog', 'topbar-js' );
 		   } else {

@@ -29,15 +29,15 @@
 		<title>Breanan Turner</title>
 		<meta charset="UTF-8"></meta>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1"></meta>
-		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
+		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/style.css">
 		<?php if( $mobile == false ) : ?>
 			<!-- Desktop specific style rules -->
-			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/desktop.css">
+			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/desktop.css">
 		<?php else: ?>
 			<!-- Mobile specific style rules -->
-			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/mobile.css">
+			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/mobile.css">
 		<?php if( $_SESSION['javascript'] === false ) : ?>
-			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/mobile-nojs.css">
+			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/mobile-nojs.css">
 		<?php endif;
 			endif; 
 		

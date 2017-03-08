@@ -37,15 +37,15 @@ jQuery(document).ready(function(){
 		var date = jQuery( this ).attr( 'href' ).split( '/' );
 		var month = date[ date.length - monthDistFromEnd ];
 		var year = date[ date.length - yearDistFromEnd ];
-		
-		var request = {
-			'date': {
-				'month': month,
-				'year': year,
-				'text': jQuery( this ).text()
-			},
-			'paged': '1'
-		};
+//		
+//		var request = {
+//			'date': {
+//				'month': month,
+//				'year': year,
+//				'text': jQuery( this ).text()
+//			},
+//			'paged': '1'
+//		};
 		
 		// Reset session storage.
 		sessionStorage.clear();
@@ -54,7 +54,7 @@ jQuery(document).ready(function(){
 		sessionStorage.setItem('year', year);
 		sessionStorage.setItem('text', jQuery( this ).text());
 		
-		get_posts( request );
+//		get_posts( request );
 	});
 	
 	// Search posts.
@@ -109,19 +109,19 @@ jQuery(document).ready(function(){
 		get_posts( request );
 	});
 	
-	jQuery( '#mobile-words' ).click(function(event) {	
-		event.preventDefault();
+//	jQuery( '#mobile-words' ).click(function(event) {	
+//		event.preventDefault();
 
-		var request = {
-			'recent': 'yes',
-			'paged': '1'
-		};
+//		var request = {
+//			'recent': 'yes',
+//			'paged': '1'
+//		};
 
-		sessionStorage.clear();
-		sessionStorage.setItem('filter', 'recent');
+//		sessionStorage.clear();
+//		sessionStorage.setItem('filter', 'recent');
 
-		get_posts( request );
-	});
+//		get_posts( request );
+//	});
 });
 
 function get_posts( request ) {

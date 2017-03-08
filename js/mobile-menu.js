@@ -1,17 +1,21 @@
 jQuery(document).ready(function(){
 	// Home button
 	jQuery( '#mobile-home' ).click(function() {
-		window.location.href = jQuery( this ).data( 'url' );
+		closeMobileMenu( jQuery( '#mobile-menu-wrapper' ) )
+	});
+	
+	// Words button
+	jQuery( '#mobile-words' ).click(function() {
+		closeMobileMenu( jQuery( '#mobile-menu-wrapper' ) )
 	});
 
 	// Mobile menu, toggle open menu.
 	jQuery( '#mobile-toggle' ).click(function() {
 		menu = jQuery( '#mobile-menu-wrapper' );
-		
 		openMobileMenu( menu );
 	});
 	
-	// Swipe from right edge.
+	// Swipe from right edge to open menu.
 	jQuery( 'body' ).swipeleft(function( event ){
 		// take 15% of screen good for diffrent screen size
 		var triggerWidth = jQuery( window ).width() * 0.85;
@@ -88,6 +92,7 @@ jQuery(document).ready(function(){
 		toggleMenu( jQuery( this ) );
 	});
 	
+	// Menu open/close.
 	function toggleMenu( menu ) {
 		if( !menu.siblings( 'ul' ).hasClass( 'active' ) ) {
 			jQuery( '#mobile-menu-wrapper .active' ).slideUp(function() {

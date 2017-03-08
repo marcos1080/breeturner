@@ -1,10 +1,36 @@
+/*******************************************************************************
+
+	Contact form, front page behaviour.
+
+*******************************************************************************/
+
+/*******************************************************************************
+
+	Variables.
+	
+*******************************************************************************/
+
 var slideSpeed = 300;
 var fullscreenOverlay = jQuery('<div class="overlay"></div>');
 
+/*******************************************************************************
+
+	Main, after page load.
+	
+*******************************************************************************/
+
 jQuery(document).ready(function(){
+	// Add event handler to "Email Me" link.
 	openHandler();
+	// Add event handler to "Send" button.
 	addContactEventHandlers();
 });
+
+/*******************************************************************************
+
+	Functions
+	
+*******************************************************************************/
 
 function formatNewContactForm() {
 	
@@ -16,22 +42,21 @@ function formatNewContactForm() {
 		jQuery(this).remove();
 	});
 	
-	// Move botom error message to the top of div.
+	// Move bottom error message to the top of div.
 	var errorMessage = jQuery('.wpcf7-response-output');
 	var parentForm = errorMessage.closest('form');
 	errorMessage.detach();
 	errorMessage.prependTo(parentForm);
 }	
 
+// "Email Me" link clicked. Slide up and down function.
 function openHandler() {
-	// "Email Me" link clicked. Slide up and down function.
 	jQuery( '#contact' ).click(function(event) {
 		event.preventDefault();
 	
 		var contactForm = jQuery( '#contact-form' );		
 
-		if (contactForm.hasClass('open'))
-		{
+		if (contactForm.hasClass('open')) {
 			contactForm.removeClass('open');
 			contactForm.slideUp();
 		} else {
@@ -41,6 +66,7 @@ function openHandler() {
 	});
 }
 
+// Add the event handler to a form.
 function addContactEventHandlers() {
 	// Submit button clicked. Stop default action and replace with AJAX.
 	jQuery( '#contact-form form' ).submit(function(event) {
@@ -51,18 +77,22 @@ function addContactEventHandlers() {
 			url,
 			jQuery(this).serialize(),
 			function( data ) {
-
 				var response = jQuery(data);
+				// Response is an entire page, separate the form from the page.
 				var newContactForm = response.find('#contact-form');
+				// Set the form to the current state.
 				newContactForm.addClass('open');
 				newContactForm.find('.wpcf7-mail-sent-ok').text = '';
 				newContactForm.find('.wpcf7-mail-sent-ok').removeAttr('role');
 				newContactForm.find('.wpcf7-mail-sent-ok').hide();
 			
+				// Replace the current form with the response form.
 				jQuery('#contact-form').empty().replaceWith(newContactForm);
 				newContactForm.show();
 			
+				// Set any error messages.
 				formatNewContactForm();
+				// Set event handlers for the new form.
 				addContactEventHandlers();
 				
 				// Handle successful email.
@@ -75,17 +105,21 @@ function addContactEventHandlers() {
 	});
 }
 
+// Display an alert informing user of successful message.
 function showSuccessAlert() {
+	// Success alert parts.
 	var alert = jQuery('<div id="message-sent"></div>');
 	var message = jQuery('<p id="message-sent-message">Your message has been sent</p>');
 	var messageLine2 = jQuery('<p id="message-sent-message">Thanks!</p>');
 	var ok = jQuery('<p id="message-sent-ok"><a href="">OK</a></p>');
 	
+	// Assemble the parts.
 	alert.append(message);
 	alert.append(messageLine2);
 	alert.append(ok);
 	fullscreenOverlay.append(alert);
 	
+	// Set the styling.
 	alert.css({
 		'background-color': 'white',
 		'border': '2px solid rgba(0,0,0,.4)',
@@ -120,11 +154,13 @@ function showSuccessAlert() {
 		'padding-top': '12px'
 	});
 	
+	// Display the alert.
 	jQuery( 'body' ).prepend( fullscreenOverlay );
 	fullscreenOverlay.animate({
 		'opacity': '1'
 	}, slideSpeed);
 	
+	// Hide the form when the user clicks ok.
 	jQuery('#message-sent-ok').click(function(event) {
 		event.preventDefault();
 		// Close contactForm
@@ -132,6 +168,7 @@ function showSuccessAlert() {
 		contactForm.removeClass('open');
 		contactForm.slideUp();
 		
+		// Hide alert.
 		fullscreenOverlay.animate({
 			'opacity': '0'
 		}, slideSpeed, function() {

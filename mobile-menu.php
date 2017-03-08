@@ -8,10 +8,10 @@
 	</div>
 	<ul id="mobile-menu-wrapper">
 		<li id="mobile-home" data-url="<?php echo get_home_url(); ?>">
-			<h2>Home</h2>
+			<a href="<?php echo get_home_url(); ?>"><h2>Home</h2></a>
 		</li>
 		<li id="mobile-words">
-			<h2>Words</h2>
+			<a href="<?php echo get_home_url().'/words/'; ?>"><h2>Words</h2></a>
 		</li>
 		<li>
 		   <form id="searchform" 

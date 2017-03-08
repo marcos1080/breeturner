@@ -31,12 +31,14 @@
 	width: 30px;
 	height: 30px;
 	margin: 17px 18px 0px 0px;
+	cursor: pointer;
 }
 
 #mobile-toggle img {
 	float: right;
 	width: 100%;
 	display: block;
+	cursor: pointer;
 }
 
 #mobile-menu-wrapper {
@@ -77,6 +79,11 @@
 	display: none;
 }
 
+#mobile-home a,
+#mobile-words a {
+	color: rgba(0,0,0,0.9);
+}
+
 /* The left and right margins are uneven to account for the borders around the 
 posts. */
 .blog #content {
@@ -108,6 +115,10 @@ posts. */
 	padding-top: 2px;
 }
 
+.blog #post-wrapper {
+	margin: 0px;
+}
+
 .posts .post {
 	margin-top: 4px;
 	margin-bottom: 4px;
@@ -129,6 +140,10 @@ posts. */
 
 .post-main {
 	margin-top: 0px;
+}
+
+#barContainer {
+	width: calc( 100% - 50px );
 }
 
 /*******************************************************************************
