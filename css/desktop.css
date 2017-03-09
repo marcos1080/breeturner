@@ -6,3 +6,30 @@ a:hover {
 #barContainer {
 	width: calc( 100% - 200px );
 }
+
+/*******************************************************************************
+
+	CV page setings.
+
+*******************************************************************************/
+
+#pl-90 {
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 60px;
+}
+
+.panel-grid-cell {
+	padding: 0px 20px 0px 0px !important;
+	border-right: 2px solid rgba(0,0,0,0.1);
+}
+
+.panel-grid-cell:last-child {
+	padding: 0px !important;
+	border: none;
+}
+
+#pgc-90-2-1 {
+	padding: 0px 0px 0px 20px !important;
+}

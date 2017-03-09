@@ -109,6 +109,7 @@ posts. */
 
 #content h1 {
 	margin: 10px 0px;
+	padding-top: 25px;
 }
 
 .blog #content {
@@ -160,6 +161,37 @@ posts. */
 
 #respond {
 	padding-bottom: 15px;
+}
+
+/*******************************************************************************
+
+	CV page setings.
+
+*******************************************************************************/
+
+/* Adjust the position of the grid content. */
+#pl-90 {
+	margin: 30px 10px 65px;
+}
+
+/* Remove pesky inline style padding */
+.panel-grid-cell {
+	padding: 0px !important;
+}
+
+/* Collapses the table structure, allows for normal layout. */
+.textwidget table tr td {
+	display: block;
+	padding-bottom: 20px;
+}
+
+.textwidget table tr td:first-child {
+	padding-bottom: 5px;
+	color: rgba(0,0,0,0.4);
+}
+
+.widget-title {
+	text-align: center;
 }
 
 /*******************************************************************************

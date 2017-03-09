@@ -76,10 +76,11 @@ function addContactEventHandlers() {
 		event.preventDefault();
 		
 		// Hide submit button and show loading icon.
-		jQuery('.wpcf7-submit').fadeOut(300, function() {
-			jQuery('.loading-icon').fadeIn(300);
+		jQuery('.wpcf7-submit').fadeOut(slideSpeed, function() {
+			jQuery('.loading-icon').fadeIn(slideSpeed);
 		});
 		
+		// Send form details to ajax.php
 		var url = location.protocol + '//' + location.host + jQuery(this).attr('action');
 		jQuery.post(
 			url,
@@ -185,11 +186,6 @@ function showSuccessAlert() {
 			fullscreenOverlay.empty().removeAttr( 'style' ).remove();
 		});
 	});
-	
-//	// Show the submit button.
-//	jQuery('.loading-icon').fadeOut(300, function() {
-//		jQuery('.wpcf7-submit').fadeIn(300);
-//	});
 }
 
 // Adds a loading icon div element to the send button. When the button is
