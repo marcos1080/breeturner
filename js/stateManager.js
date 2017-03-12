@@ -10,8 +10,27 @@
 
 function stateManager() {
 
+	// Needed for archive postsObjects.
 	var months = [ "January", "February", "March", "April", "May", "June", 
                "July", "August", "September", "October", "November", "December" ];
+
+	// Check if anything is stored in the sessionStorage object.
+	this.sessionStorageHasState = function () {
+		console.log('Checking sessionStorage state...');
+		if (sessionStorage.length == 0 ) {
+			console.log('   no state present');
+			return false;
+		}
+		
+		console.log('   state present.');
+		return true;
+	}
+
+	/************************************************************************
+	
+		History State
+		
+	************************************************************************/
 
 	// Check if the history object for this page has state attached.
 	this.historyHasState = function () {
@@ -28,46 +47,29 @@ function stateManager() {
 		return true;
 	}
 
-	// Check if anything is stored in the sessionStorage object.
-	this.sessionStorageHasState = function () {
-		console.log('Checking sessionStorage state...');
-		if (sessionStorage.length == 0 ) {
-			console.log('   no state present');
-			return false;
-		}
-		
-		console.log('   state present.');
-		return true;
-	}
-
-	// Save state to history.
+	/*****************************************************************
+		Save state to history.
+	*****************************************************************/
 	this.savePostsObjectToHistory = function ( postsObject, update ) {
 		console.log( 'Saving state to history...' );
 		var state = {
 			'filter': postsObject.filter,
-			'add': postsObject.add
+			'heading': postsObject.heading
 		};
 	
 		switch ( state.filter ) {
-			case 'recent':
-				// Title.
-				state.heading = 'Recent Posts';
-				break;
 			case 'category':
 				// Title.
 				state.category = postsObject.category;
-				state.heading = 'Search Results for "' + state.category;
 				break;
 			case 'archive':
 				// Title.
 				state.month = postsObject.month;
 				state.year = postsObject.year;
-				state.heading = 'Search Results for "' + months[state.month - 1] + ' ' + state.year;
 				break;
 			case 'search':
 				// Title.
 				state.searchString = postsObject.searchString;
-				state.heading = 'Search Results for "' + state.searchString;
 				break;
 		}
 	
@@ -76,17 +78,22 @@ function stateManager() {
 			state.next = postsObject.next;
 		}
 	
-		// Save postArray.
-		// Array to store each DOM element as a string.
-		stringArray = []
+		// If the postsObject has "add" then it contains posts.
+		if (postsObject.hasOwnProperty( 'add' )) {
+			state.add = postsObject.add
+
+			// Save postArray.
+			// Array to store each DOM element as a string.
+			stringArray = []
 	
-		// Convert each post element to string.
-		jQuery.each( postsObject.postArray, function() {
-			stringArray.push( jQuery( this ).prop( 'outerHTML' ) );
-		});
+			// Convert each post element to string.
+			jQuery.each( postsObject.postArray, function() {
+				stringArray.push( jQuery( this ).prop( 'outerHTML' ) );
+			});
 	
-		state.postArray = JSON.stringify( stringArray );
-	
+			state.postArray = JSON.stringify( stringArray );
+		}
+
 		// Append state to history.
 		if( update === undefined ) {
 			window.history.pushState( state, state.heading );
@@ -95,6 +102,9 @@ function stateManager() {
 		}
 	}
 
+	/***************************************************************
+		Load state from history.
+	***************************************************************/
 	this.loadPostsObjectFromHistory = function () {
 		console.log( 'Loading state from history...' );
 		
@@ -102,10 +112,7 @@ function stateManager() {
 		
 		// Create new posts object.	
 		var postsObject = {
-			'postArray': [],
-			'heading': state.heading,
-			'unloadedThumbs': [],
-			'add': state.add
+			'heading': state.heading
 		};
 	
 		// Add posts metadata
@@ -126,24 +133,37 @@ function stateManager() {
 				sessionStorage.filter = 'search';
 				sessionStorage.searchString = state.searchString;
 				break;
+			case 'no_posts':
+				postsObject.filter = 'no_posts';
+				break;
 		}
 	
-		// Add next page index if neccessary.
-		if( state.hasOwnProperty( 'next' ) ) {
-			postsObject.next = state.next;
+		// If the state has "add" then it contains posts.
+		if (state.hasOwnProperty( 'add' )) {
+			postsObject.postArray = [];
+			postsObject.unloadedThumbs = [];
+			postsObject.add = state.add;
+		
+			// Add next page index if neccessary.
+			if( state.hasOwnProperty( 'next' ) ) {
+				postsObject.next = state.next;
+			}
+	
+			// Restore DOM
+			stringArray = JSON.parse( state.postArray );
+	
+			// Convert string array to DOM element array.
+			jQuery.each( stringArray, function( index, value ) {
+				postsObject.postArray.push( jQuery( value ) );
+			});
 		}
-	
-		// Restore DOM
-		stringArray = JSON.parse( state.postArray );
-	
-		// Convert string array to DOM element array.
-		jQuery.each( stringArray, function( index, value ) {
-			postsObject.postArray.push( jQuery( value ) );
-		});
 
 		return postsObject;
 	}
 
+	/***************************************************************
+		Update state in history.
+	***************************************************************/
 	this.updatePostsObjectInHistory = function ( newPostsObject ) {
 		console.log( 'Updating state in history...' );
 		console.log(newPostsObject);
@@ -163,7 +183,15 @@ function stateManager() {
 		this.savePostsObjectToHistory( oldPostsObject, update = true );
 	}
 	
-	// Construct an ajax request object based on the filter variable.
+	/************************************************************************
+	
+		SessionStorage State
+		
+	************************************************************************/
+	
+	/*****************************************************************
+		Load AJAX request from sessionStorage.
+	*****************************************************************/
 	this.loadRequestFilterFromSessionStorage = function () {
 		console.log('Loading request filter from sessionStorage');
 		var requestObject = {};
@@ -191,6 +219,9 @@ function stateManager() {
 		return requestObject;
 	}
 	
+	/****************************************************************
+		Save an AJAX request to sessionStorage.
+	****************************************************************/
 	this.saveRequestFilterToSessionStorage = function ( filter ) {
 		console.log('Saving request filter to sessionStorage');
 		

@@ -17,14 +17,6 @@ function bree_turner_scripts() {
 							  get_template_directory_uri() . '/js/contacts.js',
 							  array( 'jquery' )
 	);
-	wp_enqueue_script( 'comment-form-script',
-							  get_template_directory_uri() . '/js/comments.js',
-							  array( 'jquery' )
-	);
-	wp_enqueue_script( 'cv-script',
-							  get_template_directory_uri() . '/js/cv.js',
-							  array( 'jquery' )
-	);
 	wp_enqueue_script( 'state-manager-script',
 							  get_template_directory_uri() . '/js/stateManager.js',
 							  array( 'jquery' )

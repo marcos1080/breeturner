@@ -70,7 +70,7 @@
 				$postdata['filter'] = 'archive';
 				$postdata['month'] = $args['date_query']['month'];
 				$postdata['year'] = $args['date_query']['year'];
-			} else if ( isset( $args['search'] ) ) {
+			} else if ( isset( $args['s'] ) ) {
 				$postdata['filter'] = 'search';
 				$postdata['searchString'] = $args['s'];
 			}
@@ -79,7 +79,7 @@
 			echo json_encode( $postdata );
 		} else {
 			// No posts found for the query.
-			echo json_encode( array( 'no_post' => $heading ) );
+			echo json_encode( array( 'no_posts' => $heading ) );
 		}
 	
 		// ??
@@ -139,10 +139,8 @@
 			
 			$args = array( 
 				'date_query' => array(
-					array(
-						'year' => $year,
-						'month' => $month,
-					),
+					'year' => $year,
+					'month' => $month,
 				),
 				'paged' => $data['paged']
 			);

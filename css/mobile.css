@@ -87,7 +87,7 @@
 /* The left and right margins are uneven to account for the borders around the 
 posts. */
 .blog #content {
-	margin: 20px 5px 4px 3px;
+	margin: 0px 5px 0px 3px;
 }
 
 #main .column-wrapper .column li:last-child {
@@ -107,13 +107,23 @@ posts. */
 
 *******************************************************************************/
 
+/* Set specifically for CV page. */
 #content h1 {
 	margin: 10px 0px;
 	padding-top: 25px;
 }
 
+/* Undo above specifically for blog and post page */
+.blog #content h1 {
+	padding-top: 12px;
+}
+
+.post-main #content h1 {
+	padding-top: 0px;
+}
+
 .blog #content {
-	padding-top: 2px;
+	/*padding-top: 2px;*/
 }
 
 .blog #post-wrapper {

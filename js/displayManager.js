@@ -1,14 +1,38 @@
+/*******************************************************************************
+
+	Class responsible for manipulating posts on the page and building column
+	wrappers and adding posts to them.
+	
+	Also for controlling the progress indicators.
+
+*******************************************************************************/
 function displayManager( ajax, postManagerObject ) {
 	
 	var loadingShowing = false;
 	var progressShowing = false;
-	var columnBuilderObject = new columnBuilder();
+	var fadeSpeed = 300;
 	
+	// Need to have a column builder object.
+	if (columnBuilderObject == null) {
+		columnBuilderObject = new columnBuilder();
+	}
+	
+	/***********************************************************************
+	
+		Progress indication.
+	
+	***********************************************************************/
+	
+	// Add loading element to screen. Used by the progress bar too.
 	this.showLoadingIndicator = function () {
+		// Get loading icon url
 		var loadingIconUrl = jQuery('body').data('uri') + '/images/icons/loading.gif';
+		
+		// Create elements.
 		var loadingIcon = jQuery('<img src="' + loadingIconUrl + '" alt="Loading Icon">');
 		var loadingContainer = jQuery('<div id="loading"></div>');
 		
+		// Set style for icon.
 		loadingIcon.css({
 			'background-color': 'rgba(0,0,0,0)',
 			'width': '80px',
@@ -22,28 +46,36 @@ function displayManager( ajax, postManagerObject ) {
 			'-webkit-transform': 'translate( -50%, -50% )',
 		});
 		
-		loadingContainer.css({
-			'width': '100%',
-			'height': jQuery(window).height() - 55 - jQuery('#footer').outerHeight()
-		});
-		
+		// Add elements to the DOM.
 		loadingIcon.appendTo(loadingContainer);
 		loadingContainer.appendTo('#post-wrapper');
+		
+		// Set the style for the container once added. Can use the height then
+		// to adjust the height.
+		loadingContainer.css({
+			'width': '100%',
+			'height': loadingContainer.height() + gapToBottomOfScreen()
+		});
 		
 		loadingShowing = true;
 	}
 	
+	// Progress bar that shows how many images have been pre-loaded.
 	this.showProgressBar = function () {
+		// Only do if the loading div element is present.
 		if ( loadingShowing == true ) {
+			// Create elements.
 			var progressContainer = jQuery('<div id="barContainer"></div>');
 			var progressIndicator = jQuery('<div id="barProgress"></div>');
 			
+			// Inner progress indicator set to 0%
 			progressIndicator.css({
 				'background-color': 'rgba(0,0,0,0.1)',
 				'width': '0%',
 				'height': '100%'
 			});
 			
+			// Bar styling.
 			progressIndicator.appendTo(progressContainer);
 			progressContainer.css({
 				'backgrond-color': 'white',
@@ -61,11 +93,13 @@ function displayManager( ajax, postManagerObject ) {
 				'-webkit-transform': 'translate( -50%, -50% )',
 			});
 			
+			// Add to DOM.
 			progressContainer.appendTo('#loading');
 			progressShowing = true;
 		}
 	}
 	
+	// Adjust current progress.
 	function incrementProgressBar ( total, current ) {
 		if ( progressShowing ) {
 			jQuery('#barProgress').css({
@@ -74,6 +108,7 @@ function displayManager( ajax, postManagerObject ) {
 		}
 	}
 	
+	// Add to load more link at start in order to pre-load icon.
 	this.showLoadMoreProgress = function () {
 		var loadingIconUrl = jQuery('body').data('uri') + '/images/icons/loading.gif';
 		var loadingIcon = jQuery('<img src="' + loadingIconUrl + '" alt="Loading Icon">');
@@ -85,11 +120,21 @@ function displayManager( ajax, postManagerObject ) {
 		loadingIcon.appendTo('#load-more');
 	}
 	
+	/************************************************************************
+	
+		Post Display
+	
+	************************************************************************/
+	
 	// Takes a postsObject and displays it in the page.
 	this.displayPosts = function ( postsObject ) {
 		console.log('Displaying posts...');
-		// Check if images need to be pre-loaded.
-		if( postsObject.unloadedThumbs.length > 0 ) {
+
+		if( postsObject.filter == 'no_posts') {
+			// No Posts found for a search keyword.
+			noPosts( postsObject );
+		} else if( postsObject.unloadedThumbs.length > 0 ) {
+			// Check if images need to be pre-loaded.
 			numOfThumbs = postsObject.unloadedThumbs.length;
 			count = 0;
 			
@@ -132,6 +177,33 @@ function displayManager( ajax, postManagerObject ) {
 		
 	}
 	
+	// If there are no posts then set the title.
+	function noPosts( postsObject ) {
+		// If loading element not present it means the postObject is from history
+		// state.
+		if( jQuery('#loading').length ) {
+			// Fade out loading indicator
+			jQuery('#loading').fadeOut(fadeSpeed, function() {
+				jQuery(this).remove();
+				showNoPost(postsObject);
+			});
+		} else {
+			showNoPost(postsObject);
+		}
+	}
+	
+	function showNoPost( postsObject ) {
+		// Add to DOM.
+		var heading = jQuery( '<h1>' + postsObject.heading + '</h1>' ).appendTo( '#post-wrapper' );
+	
+		// Adjust layout.
+		heading.css({
+			'height': heading.height() + gapToBottomOfScreen()
+		});
+	}
+	
+	// Adds posts to the DOM. Either by building new column-wrapper or adding to
+	// existing one.
 	function showPosts( postsObject ) {
 		var columnWrapper;
 
@@ -194,6 +266,20 @@ function displayManager( ajax, postManagerObject ) {
 				fadePostsIn( array, index + 1 );
 			}, 100);
 		}
+	}
+	
+	/***********************************************************************
+	
+		Helper functions
+		
+	***********************************************************************/
+	
+	// Find the distance of the bottom of the body and the bottom of the screen.
+	function gapToBottomOfScreen() {
+		var bodyHeight = jQuery('html').outerHeight();
+		var windowHeight = jQuery(window).outerHeight();
+		
+		return windowHeight - bodyHeight;
 	}
 	
 	console.log('Post Display Manager initialised...');

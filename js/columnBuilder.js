@@ -1,17 +1,30 @@
+/* Class to construct the column and column wrapper DOM elements.
+	
+	Contains the pixel break points to calculate how many columns to construct
+	given the current window size.
+	
+	Only has one public function "buildColumns". This function calls private
+	functions and classes to construct a columnWrapper element ready to receive
+	posts.
+*/
+
 function columnBuilder() {
+
 	/* Holds the current number of columns. Used for comparison on resize and to
 		build column wrappers.
 	*/ 
 	this.numOfColumns;
+	
 	// Column number window size break points.
 	var one_column_max_width = 530;
 	var two_column_max_width = 780;
 	var three_column_max_width = 1200;
 
+	// Main public function.
 	this.buildColumns = function () {
 		
-		// Set number of colums, based on window width.
-		this.numOfColumns = getNumOfColumns();
+		// Set number of columns, based on window width.
+		this.numOfColumns = this.getNumOfColumns();
 		
 		var columnwrapper;
 		
@@ -38,20 +51,19 @@ function columnBuilder() {
 		return columnWrapper;
 	}
 
-
-	function getNumOfColumns() {
-		curr_width = jQuery( window ).width();
-		if( curr_width < one_column_max_width ) {
+	// Uses the current window width and break points to determine the number
+	// of columns to create.
+	this.getNumOfColumns = function () {
+		var currentWidth = jQuery( window ).width();
+		if( currentWidth < one_column_max_width ) {
 			return 1;
-		} else if( curr_width < two_column_max_width ) {
+		} else if( currentWidth < two_column_max_width ) {
 			return 2;
-		} else if( curr_width < three_column_max_width ) {
+		} else if( currentWidth < three_column_max_width ) {
 			return 3;
 		} else {
 			return 4;
 		}
-	
-		return 0;
 	}
 	
 	// Class for a post column to hold posts.
@@ -59,14 +71,18 @@ function columnBuilder() {
 		// Constructor
 		this.column = jQuery( '<ul class="' + name + ' posts column"></ul>' );
 
+		// Add post to the column.
 		this.addPost = function( post ) {
 			post.appendTo( this.column );
 		}
 	
+		// Get the current height of the column based on the height of posts
+		// contained.
 		this.getHeight = function() {
 			return this.column.height();
 		}
 	
+		// Return DOM element to calling function.
 		this.getColumn = function() {
 			return this.column;
 		}

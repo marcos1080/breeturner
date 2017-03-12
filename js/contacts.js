@@ -13,27 +13,23 @@
 var slideSpeed = 300;
 var fullscreenOverlay = jQuery('<div class="overlay"></div>');
 
-
 /*******************************************************************************
 
-	Main, after page load.
+	Functions
 	
 *******************************************************************************/
 
-jQuery(document).ready(function(){
+// Setup function for the foloowing functions.
+function setupContactForm() {
 	// Add event handler to "Email Me" link.
 	openHandler();
 	// Add event handler to "Send" button.
 	addContactEventHandlers();
 	// Add loading icon element to form.
 	addProgressIcons();
-});
-
-/*******************************************************************************
-
-	Functions
 	
-*******************************************************************************/
+	console.log('Contact Form initialised...');
+}
 
 function formatNewContactForm() {
 	

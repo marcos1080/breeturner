@@ -1,10 +1,23 @@
+/*******************************************************************************
+
+	Class takes a JSON object returned from the ajaxManager class and creates
+	a postsObject that contains all the information displayPosts class needs
+	to construct columns.
+
+*******************************************************************************/
+
 function postManager() {
 	
 	// Build a posts object from an ajax response JSON object.
 	this.buildPostsObject = function ( ajaxResponseObject ) {
 		// Check if any posts were returned.
-		if( ajaxResponseObject.hasOwnProperty( 'no_post' ) ) {
-			return null;
+		if( ajaxResponseObject.hasOwnProperty( 'no_posts' ) ) {
+			var heading = 'No Search Results for "' + ajaxResponseObject.no_posts + '"';
+			
+			return {
+				'filter': 'no_posts',
+				'heading': heading
+			};
 		}
 		
 		console.log('Building post object...');
