@@ -54,7 +54,8 @@ function displayManager( ajax, postManagerObject ) {
 		// to adjust the height.
 		loadingContainer.css({
 			'width': '100%',
-			'height': loadingContainer.height() + gapToBottomOfScreen()
+			'height': loadingContainer.height() + gapToBottomOfScreen(),
+			'position': 'relative'
 		});
 		
 		loadingShowing = true;
@@ -278,6 +279,12 @@ function displayManager( ajax, postManagerObject ) {
 	function gapToBottomOfScreen() {
 		var bodyHeight = jQuery('html').outerHeight();
 		var windowHeight = jQuery(window).outerHeight();
+		
+		// If viewing on a desktop with a small vertical window the indicators
+		// can get squished. return a big enough value.
+		if( (windowHeight - bodyHeight) < 200 ) {
+			return 400;
+		}
 		
 		return windowHeight - bodyHeight;
 	}

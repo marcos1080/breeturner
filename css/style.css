@@ -421,6 +421,21 @@ ul {
 	text-align: center;
 }
 
+#load-more {
+	height: 30px;
+	position: relative;
+}
+
+#load-more a {
+	position: absolute;
+	top: 50%;
+	transform: translate( -50%, -50% );
+	-o-transform: translate( -50%, -50% );
+	-ms-transform: translate( -50%, -50% );
+	-moz-transform: translate( -50%, -50% );
+	-webkit-transform: translate( -50%, -50% );
+}
+
 #two-columns .posts {
 	width: calc( 50% - 60px );
 	padding: 0 30px;
