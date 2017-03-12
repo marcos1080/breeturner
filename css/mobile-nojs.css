@@ -2,14 +2,19 @@
 	margin-top: 10px;
 }
 
+.posts li {
+	margin: 3px 0px;
+}
+
 .posts li:first-child {
-	margin-top: 30px;
+	margin-top: 6px;
 }
 
 .posts li:last-child {
-	margin-bottom: 30px;
+	margin-bottom: 6px;
 }
 
 .mobile-post-nav {
+	margin-top: 10px;
 	margin-bottom: 20px;
 }

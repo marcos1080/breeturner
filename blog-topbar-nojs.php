@@ -1,9 +1,7 @@
-<?php $target_link = 'http://139.59.247.69/words/'; ?>
-
-<!-- Top bar for non javascript page. -->
+<?php $target_link = 'https://'.$_SERVER['SERVER_NAME']."/words/"; ?>
 <div class="top-bar">
    <li>
-      <a href="<?php echo $target_link.'?'; ?>"<?php if ( empty( $_GET ) ) { echo ' class="current"'; } ?>>RECENT</a>
+      <a href="<?php echo $target_link;?>"<?php if ( empty( $_GET ) ) { echo ' class="current"'; } ?>>RECENT</a>
    </li>
    <?php /*<li>
       <a href="<?php echo $target_link.'?categories' ; ?>"<?php if ( isset( $_GET['categories'] ) ) { echo ' class="current"'; } ?>>CATEGORIES</a>

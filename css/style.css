@@ -21,6 +21,7 @@ body {
 	background-color: rgb(246,246,246);
 }
 
+/* Main content. Set to light grey background. */
 #wrapper {
 	display: block;
 	margin:0px 10px;
@@ -61,6 +62,7 @@ body {
 	}
 }
 
+/* Set transition speeds for post fade in, menu link colour change. */
 .fade-speed,
 .menu ul li a,
 .top-bar > li > a {
@@ -77,6 +79,7 @@ body {
 	-o-transition-timing-function: ease;
 }
 
+/* Main link style. */
 a {
 	font-family: "Sans Heading";
 	text-decoration: none;
@@ -91,6 +94,7 @@ a {
 
 }
 
+/* Main font styles. */
 h1, h2, h3 {
 	font-family: "Serif Heading";
 	font-weight: 100;
@@ -101,6 +105,7 @@ p {
 	color: rgba(0,0,0,.8);
 }
 
+/* Set main list style. */
 li {
 	list-style-type: none;
 }
@@ -201,19 +206,18 @@ ul {
 	overflow-y: auto;
 }
 
+/* only show box shadow when sidebar has been given the class active through
+	javascript. */
 #sidebar.active {
 	box-shadow: 0 0 10px rgba(0,0,0,.2);
 }
 
+/* distance between menu items in sidebar. */
 #sidebar li {
 	padding: 5px;
 }
 
-#sidebar .menu-main-container {
-	display: none;
-	margin-top: 30px;
-}
-
+/* Sub menu. Archives and Categories (when enabled). */
 .blog-sub-menu {
 	position: absolute;
 	display: none;
@@ -222,6 +226,7 @@ ul {
 	margin-top: 30px;
 }
 
+/* Full screen overlay when sidebar shows. */
 .overlay {
 	position: fixed;
 	top: 0px;
@@ -241,10 +246,12 @@ ul {
 
 *******************************************************************************/
 
+/* Main "Bree Turner" heading. */
 #header h1 {
 	font-size: 3em;
 }
 
+/* Main Menu. */
 #header .menu-main-container {
 	padding: 0;
 	list-style-type: none;
@@ -253,25 +260,27 @@ ul {
 	padding: 0 30px;
 }
 
-#header  .menu {
+#header .menu {
 	padding: 0px;
 	margin-top: 0px;
 }
 
-#header  .menu li {
+#header .menu li {
 	display: inline-block;
 	padding: 0px 15px;
 	margin: 0px -2px;
 	background-color: rgb(246,246,246);
 }
 
-#header  .menu-line {
+/* Separating line through menu. Set to hide on small displays. */
+#header .menu-line {
 	display: none;
 	border-bottom: 2px solid rgba(0,0,0,.1);
-	margin-top: -.8em;
+	margin-top: -.7em;
 	margin-bottom: 1.7em;
 }
 
+/* Main home page image. */
 .header-image {
 	margin: 60px 0;
 }
@@ -280,12 +289,14 @@ ul {
 	width: 100%;
 }
 
+/* Show menu line. */
 @media screen and (min-width: 620px){
 	#header  .menu-line {
 		display: block;
 	}
 }
 
+/* Style for large screens. */
 @media screen and (max-width: 480px){
 	#wrapper {
 		margin: 0px;
@@ -297,7 +308,6 @@ ul {
 	
 	#header  .menu-line {
 		display: block;
-		margin-top: 10px;
 		margin-bottom: 0px;
 	}
 	
@@ -321,17 +331,11 @@ ul {
 	margin-top: 40px;
 }
 
-.posts-hidden {
-	position: fixed;
-	top: 0px;
-	left: -200%;
-	width: 300px;
-}
-
 .post {
 	opacity: 0;
 }
 
+/* Post style. */
 .posts {
 	display: inline-block;
 	vertical-align: top;
@@ -360,6 +364,7 @@ ul {
 	border: none;
 }
 
+/* Thumbnail style. */
 .attachment-post-thumbnail {
 	display: block;
 	width: 100%;
@@ -376,6 +381,7 @@ ul {
 	filter: brightness(0.8);
 }
 
+/* Date circle. */
 .posts .date-wrapper {
 	position: absolute;
 	left: 50%;
@@ -421,6 +427,7 @@ ul {
 	text-align: center;
 }
 
+/* Load more link position. */
 #load-more {
 	height: 30px;
 	position: relative;
@@ -436,6 +443,7 @@ ul {
 	-webkit-transform: translate( -50%, -50% );
 }
 
+/* Column settings. */
 #two-columns .posts {
 	width: calc( 50% - 60px );
 	padding: 0 30px;
@@ -1026,6 +1034,7 @@ form {
 	color: rgba(0,0,0,.8);
 	list-style-type: circle;
 	margin-left: 20px;
+	line-height: 1.5em;
 }
 
 /* Table Settings */
@@ -1056,7 +1065,10 @@ form {
 	margin-left: 0px !important;
 	margin-right: 0px !important;
 	border-bottom: 2px solid rgba(0,0,0,0.1);
-	padding-bottom: 10px;
+}
+
+.panel-grid-cell {
+	margin-bottom: 15px;
 }
 
 .panel-grid:last-child {

@@ -1,7 +1,9 @@
+/* Placeholder space for the floating menu. Needs to be the same height as the menu. */
 #header {
 	margin-top: 55px;
 }
 
+/* Floating menu */
 #mobile-banner {
 	padding: 0px 0px;
 	margin: 0px;
@@ -26,6 +28,7 @@
 	text-align: left;
 }
 
+/* Hamburger icon. */
 #mobile-toggle {
 	float: right;
 	width: 30px;
@@ -41,6 +44,7 @@
 	cursor: pointer;
 }
 
+/* Slide out menu container. */
 #mobile-menu-wrapper {
 	position: fixed;
 	top: 0px;
@@ -64,6 +68,7 @@
 	margin-top: 10px;
 }
 
+/* Search menu item. */
 #mobile-menu #searchform #searchinput {
 	text-align: center;
 	width: 200px;
@@ -94,6 +99,7 @@ posts. */
 	margin-bottom: 0px;
 }
 
+/* Tighten up side margins for mobile devices. Tablets only??? haven't tested. */
 #two-columns,
 #three-columns,
 #four-columns {
@@ -122,14 +128,11 @@ posts. */
 	padding-top: 0px;
 }
 
-.blog #content {
-	/*padding-top: 2px;*/
-}
-
 .blog #post-wrapper {
 	margin: 0px;
 }
 
+/* Space between posts. */
 .posts .post {
 	margin-top: 4px;
 	margin-bottom: 4px;
@@ -139,6 +142,7 @@ posts. */
 	margin-top: 0px;
 }
 
+/* Spacing between posts and load more. */
 #load-more {
 	margin: 15px 0px;
 }
@@ -153,8 +157,16 @@ posts. */
 	margin-top: 0px;
 }
 
+/* Loading bar width. */
 #barContainer {
 	width: calc( 100% - 50px );
+}
+
+@media screen and (min-width: 620px) {
+	#post-wrapper {
+		width: calc( 100% );
+		margin-left: -30px;
+	}
 }
 
 /*******************************************************************************
@@ -195,11 +207,13 @@ posts. */
 	padding-bottom: 20px;
 }
 
+/* table row heading. */
 .textwidget table tr td:first-child {
 	padding-bottom: 5px;
 	color: rgba(0,0,0,0.4);
 }
 
+/* Center headings for mobile. */
 .widget-title {
 	text-align: center;
 }
@@ -219,6 +233,7 @@ posts. */
 	height: 44px;
 }
 
+/* Set to push social media icons to the very right. */
 #info {
 	width: calc( 100% - 206px );
 }

@@ -1,3 +1,8 @@
+<?php
+	/* Creates a post html element. Used by column building class to insert 
+		formatted post element.
+	*/
+?>
 <li>
 	<a href="<?php echo get_permalink(); ?>">
 	<?php if( has_post_thumbnail() ) {

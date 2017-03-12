@@ -1,8 +1,10 @@
+/* Desktop only link effects. */
 a:hover {
 	color: rgba(0,0,0,.9);
 	border-color: rgba(0,0,0,.9);
 }
 
+/* Set the width of the progress indicator */
 #barContainer {
 	width: calc( 100% - 200px );
 }
@@ -13,6 +15,7 @@ a:hover {
 
 *******************************************************************************/
 
+/* Site Origin grid main panel. */
 #pl-90 {
 	max-width: 1000px;
 	margin-left: auto;
@@ -20,16 +23,26 @@ a:hover {
 	margin-top: 60px;
 }
 
+/* Need to set padding to important or there is padding on right and left. ??? */
 .panel-grid-cell {
 	padding: 0px 20px 0px 0px !important;
 	border-right: 2px solid rgba(0,0,0,0.1);
 }
 
+/* Undoes the aove padding rule for rows that have a single cell. this means
+	that rows with more than one cell has a gap between cells. */
 .panel-grid-cell:last-child {
 	padding: 0px !important;
 	border: none;
 }
 
+/* space to bottom of skills & attributes row to create enough white space below
+	vertical cell separator line. */
+#pg-90-2 {
+	padding-bottom: 10px;
+}
+
+/* Add space to eductation cell to create space between line and text on the left. */
 #pgc-90-2-1 {
 	padding: 0px 0px 0px 20px !important;
 }

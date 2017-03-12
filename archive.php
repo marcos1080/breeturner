@@ -42,16 +42,20 @@
 				<h1><?php echo str_replace('Month: ', '', get_the_archive_title()); ?></h1>
 		<?php
 			
+			// Navigation.
 			top_post_nav( get_previous_posts_link( 'Previous' ), get_next_posts_link( 'Next' ));
 			
+			// Column wrapper, 4 columns max.
 			$wrapper = new Post_Wrapper( 4 );
 			
 		   while ( have_posts() ) : the_post();
 				$wrapper->add_post( get_post()->ID );
 			endwhile;
 
+			// Insert wrapper into page.
 			$wrapper->print();
 			
+			// Navigation.
 			bottom_post_nav( get_previous_posts_link( 'Previous' ), get_next_posts_link( 'Next' ));
 	   ?>
 	   	</div>

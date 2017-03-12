@@ -11,6 +11,9 @@
 			<a href="<?php echo get_home_url(); ?>"><h2>Home</h2></a>
 		</li>
 		<li id="mobile-words">
+			<a href="<?php echo get_home_url().'/CV/'; ?>"><h2>CV</h2></a>
+		</li>
+		<li id="mobile-words">
 			<a href="<?php echo get_home_url().'/words/'; ?>"><h2>Words</h2></a>
 		</li>
 		<li>
