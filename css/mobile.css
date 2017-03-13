@@ -198,6 +198,14 @@ posts. */
 
 /* Remove pesky inline style padding */
 .panel-grid-cell {
+	padding: 0px 0px 40px !important;
+	/* Adds a line below attributes cell. */
+	border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+
+.panel-grid-cell:last-child {
+	border-bottom: none;
+	/* Remove the border on all other cells. */
 	padding: 0px !important;
 }
 
