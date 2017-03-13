@@ -72,11 +72,11 @@ Two menus need to be set up in the customise sub tab under the Appearance tab in
 The first needs to be named "menu"
 The second "No-JS" and is used if you need to separate out elements that are usually displayed using javascript into its own page. Such as the contact form element on the home page.
 
-###Home page.
+####Home page.
 
 Under "Appearance" > "Customize" > "static front page" set "Front Page" to Home (or whatever the landing page is called).
 Set the header image under "Appearance" > "Customize" > "Header Image". This is the main image on the landing page.
 
-###Blog Page
+####Blog Page
 
 To get the post listing page to work the "Template" field needs to be set to "blog-page".
