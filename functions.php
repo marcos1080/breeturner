@@ -26,7 +26,7 @@ function bree_turner_scripts() {
 							  array( 'jquery' )
 	);
 	wp_enqueue_script( 'ajax-manager-script', get_template_directory_uri() . '/js/ajaxManager.js', array( 'jquery' ) );
-        wp_localize_script( 'ajax-manager-script', 'ajax_object', array( 'ajax_url' => home_url() ) );
+        wp_localize_script( 'ajax-manager-script', 'ajax_object', array( 'ajax_url' => home_url().'/index.php' ) );
         
 	wp_enqueue_script( 'post-manager-script',
 							  get_template_directory_uri() . '/js/postManager.js',
