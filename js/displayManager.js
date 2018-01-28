@@ -85,7 +85,7 @@ function displayManager( ajax, postManagerObject ) {
 				'overflow': 'hidden',
 				'height': '10px',
 				'position': 'absolute',
-				'top': '55%',
+				'top': '60%',
 				'left': '50%',
 				'transform': 'translate( -50%, -50% )',
 				'-o-transform': 'translate( -50%, -50% )',
@@ -213,7 +213,7 @@ function displayManager( ajax, postManagerObject ) {
 			columnWrapper = columnBuilderObject.buildColumns();
 			
 			// Title.
-			jQuery( '<h1>' + postsObject.heading + '</h1>' ).appendTo( '#post-wrapper' );
+			//jQuery( '<h1>' + postsObject.heading + '</h1>' ).appendTo( '#post-wrapper' );
 			
 			columnWrapper.getWrapper().appendTo( '#post-wrapper' );
 			

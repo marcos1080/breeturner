@@ -95,7 +95,27 @@ function eventHandlerManager( displayManager ) {
 		
 		// Target url.
 		var themeURL = jQuery( 'body' ).data( 'uri' );
-	
+                
+                /*****************************************************************
+			Audio related
+		*****************************************************************/
+               
+                jQuery( '.audio-link' ).click(function(event) {
+                    console.log('Audio link clicked...');
+                    event.preventDefault();
+                    
+                    // Request.
+                    var request = {
+                            'filter': 'audio'
+                    };
+                    
+                    // Get target url
+                    var target_url = jQuery( this ).attr( 'href' );
+                    
+                    // Make request.
+                    saveAndReload( request, target_url );
+                });
+        
 		/*****************************************************************
 			Archive related
 		*****************************************************************/
@@ -121,7 +141,7 @@ function eventHandlerManager( displayManager ) {
 			};
 		
 			// Make request.
-			saveAndReload( request );
+			//saveAndReload( request );
 		});
 		
 		/*****************************************************************
@@ -187,7 +207,7 @@ function eventHandlerManager( displayManager ) {
 			script will	see the saved request, load it and make it.
 		*****************************************************************/
 		
-		function saveAndReload( request ) {
+		function saveAndReload( request, target_url = '' ) {
 			// Close Menu
 			if ( jQuery( '#mobile-menu-wrapper' ).length ) {
 				closeMobileMenu( jQuery( '#mobile-menu-wrapper' ) )
@@ -197,7 +217,11 @@ function eventHandlerManager( displayManager ) {
 			state.saveRequestFilterToSessionStorage( request );
 		
 			// Reload page.
-			window.location.href = themeURL + '/words/';
+                        if( target_url == '' ) {
+                            window.location.href = themeURL + '/words/';
+                        } else {
+                            window.location.href = target_url;
+                        }
 		}
 		
 		/*****************************************************************

@@ -189,59 +189,62 @@ function stateManager() {
 		
 	************************************************************************/
 	
-	/*****************************************************************
-		Load AJAX request from sessionStorage.
-	*****************************************************************/
-	this.loadRequestFilterFromSessionStorage = function () {
-		console.log('Loading request filter from sessionStorage');
-		var requestObject = {};
-		
-		switch ( sessionStorage.getItem( 'filter' ) ) {
-			case 'category': 
-				requestObject.category = sessionStorage.getItem( 'category' )
-				break;
-			case 'archive': 
-				requestObject.date = {
-					'month': sessionStorage.getItem( 'month' ),
-					'year': sessionStorage.getItem( 'year' ),
-					'text': sessionStorage.getItem( 'text' )
-				}
-				break;
-			case 'search': 
-				requestObject.search = sessionStorage.getItem( 'searchString' )
-				break;
-			default:
-				requestObject.recent = 'yes';
-		}
-		
-		sessionStorage.clear();
-		
-		return requestObject;
-	}
+    /*****************************************************************
+            Load AJAX request from sessionStorage.
+    *****************************************************************/
+    this.loadRequestFilterFromSessionStorage = function () {
+        console.log('Loading request filter from sessionStorage');
+        var requestObject = {};
+
+        switch ( sessionStorage.getItem( 'filter' ) ) {
+            case 'audio':
+                requestObject.audio = 'yes';
+                break;
+            case 'category': 
+                requestObject.category = sessionStorage.getItem( 'category' )
+                break;
+            case 'archive': 
+                requestObject.date = {
+                    'month': sessionStorage.getItem( 'month' ),
+                    'year': sessionStorage.getItem( 'year' ),
+                    'text': sessionStorage.getItem( 'text' )
+                }
+                break;
+            case 'search': 
+                requestObject.search = sessionStorage.getItem( 'searchString' )
+                break;
+            default:
+                requestObject.recent = 'yes';
+        }
+
+        sessionStorage.clear();
+        console.log(requestObject);
+        return requestObject;
+    }
 	
-	/****************************************************************
-		Save an AJAX request to sessionStorage.
-	****************************************************************/
-	this.saveRequestFilterToSessionStorage = function ( filter ) {
-		console.log('Saving request filter to sessionStorage');
-		
-		sessionStorage.clear();
-		
-		sessionStorage.setItem( 'filter', filter.filter );
-		switch ( filter.filter ) {
-			case 'archive':
-				sessionStorage.setItem( 'text', filter.text );
-				sessionStorage.setItem( 'month', filter.month );
-				sessionStorage.setItem( 'year', filter.year );
-				break;
-			case 'search':
-				sessionStorage.setItem( 'searchString', filter.searchString )
-				break;
-			case 'category':
-				sessionStorage.setItem( 'category', filter.category )
-				break;
-		}
-	}
+    /****************************************************************
+            Save an AJAX request to sessionStorage.
+    ****************************************************************/
+    this.saveRequestFilterToSessionStorage = function ( filter ) {
+        console.log('Saving request filter to sessionStorage');
+
+        sessionStorage.clear();
+
+        sessionStorage.setItem( 'filter', filter.filter );
+        switch ( filter.filter ) {
+            case 'archive':
+                sessionStorage.setItem( 'text', filter.text );
+                sessionStorage.setItem( 'month', filter.month );
+                sessionStorage.setItem( 'year', filter.year );
+                break;
+            case 'search':
+                sessionStorage.setItem( 'searchString', filter.searchString )
+                break;
+            case 'category':
+                sessionStorage.setItem( 'category', filter.category )
+                break;
+        }
+    }
 	
 	console.log('State Manager initialised...');
 }

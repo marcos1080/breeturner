@@ -32,7 +32,7 @@ jQuery(document).ready(function() {
 	// Only add if on home page.
 	if( jQuery('.home').length ) {
 		// This function is in the contacts.js file.
-		setupContactForm();
+		//setupContactForm();
 	}
 
 	// If the current page is the blog posts page then check to see if there is

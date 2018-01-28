@@ -14,7 +14,7 @@ function showPageInfo() {
 	*/
 	if (have_posts()) : while (have_posts()) : the_post(); ?>
 	 	
-	   <h1><?php the_title(); ?></h1>
+	   <!--<h1><?php the_title(); ?></h1>-->
 	   <p><?php the_content(__('(more...)')); ?></p>
 	<?php endwhile; else: ?>
 	   <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif;
@@ -25,7 +25,8 @@ function showPageInfo() {
    <div id="main" class="blog">
       <div id="content">
       <?php       	
-      	$target_link = 'http://'.$_SERVER['SERVER_NAME']."/words/";
+      	global $wp;
+        $target_url = home_url( add_query_arg( array(), $wp->request ) );
       	
       	// Three cases, javascript on desktop, javascript on mobile and non javascript.
 		   if ( $_SESSION['javascript'] === true && !wp_is_mobile() ) {

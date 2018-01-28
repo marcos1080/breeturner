@@ -25,7 +25,7 @@
 		while (have_posts()) {
 			the_post();
 			if( ! is_front_page() )	{
-				echo "<h1>".get_the_title()."</h1>";
+				//echo "<h1>".get_the_title()."</h1>";
 			}
 			echo "<p>".the_content()."</p>";
 		}

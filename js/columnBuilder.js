@@ -17,8 +17,8 @@ function columnBuilder() {
 	
 	// Column number window size break points.
 	var one_column_max_width = 530;
-	var two_column_max_width = 780;
-	var three_column_max_width = 1200;
+	var two_column_max_width = 900;
+	var three_column_max_width = 1400;
 
 	// Main public function.
 	this.buildColumns = function () {
