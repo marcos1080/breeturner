@@ -68,7 +68,7 @@ function postManager() {
 	// Take a post returned by AJAX in JSON format and convert into a DOM element.
 	function formatPost( post, thumbArray ) {
 
-		var postObject = jQuery( '<li class="post fade-speed"></li>' );
+		var postObject = jQuery( '<li class="post-synopsis fade-speed"></li>' );
 	
 		// Thumbnail.
 		var link = jQuery( '<a href="' + post.href + '"></a>' );

@@ -124,7 +124,7 @@
 		// Return most recent posts.
 		if( isset( $data['recent'] ) ) {
 			$args = array( 
-				'post_type' => 'post',
+				'post_type' => array( 'post', 'audio' ),
 				'paged' => $data['paged']
 			);
 			
@@ -151,9 +151,9 @@
 		// Returns all posts that contain a search term.
 		if( isset( $data['search'] ) ) {
 			$args = array(
-				'post_type' => 'post',
-				's' => $data['search'],
-				'paged' => $data['paged']
+				'post_type'     => array( 'post', 'audio' ),
+				's'             => $data['search'],
+				'paged'         => $data['paged']
 			);
 			
 			return_posts( $args, $data['search'] );

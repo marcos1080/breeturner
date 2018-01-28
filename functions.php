@@ -1,5 +1,9 @@
 <?php
 
+@ini_set( 'upload_max_size' , '64M' );
+@ini_set( 'post_max_size', '64M');
+@ini_set( 'max_execution_time', '300' );
+
 add_theme_support( 'post-thumbnails' ); 
 
 function remove_admin_login_header() {
@@ -64,6 +68,22 @@ function desktop_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'bree_turner_scripts' );
 
+
+/**
+ * Add scripts for the admin pages.
+ */
+if( !function_exists( 'breeturner_admin_scripts' ) ) {
+    function breeturner_admin_scripts() {
+        wp_enqueue_style( 'breeturner-admin-css', get_template_directory_uri().'/css/admin.css', array(), '1.0.0', 'all');
+        
+        // Wordpress media uploader. Used on the location pages.
+        wp_enqueue_media();
+        wp_enqueue_script( 'breeturner-admin-scripts', get_template_directory_uri().'/js/admin.js', array('jquery') );
+    }
+
+    add_action( 'admin_enqueue_scripts', 'breeturner_admin_scripts' );
+}
+
 // Load mobile or desktop specific scripts
 if( wp_is_mobile() ) {
 	add_action( 'wp_enqueue_scripts', 'mobile_scripts' );
@@ -86,6 +106,9 @@ function breeturner_setup() {
 breeturner_setup();
 
 endif;
+
+// Add custom posts
+include_once 'inc/post-audio.php';
 
 function custom_comments( $comment, $args, $depth ) {
     $GLOBALS['comment'] = $comment;
@@ -267,8 +290,7 @@ class Post {
 	var $post;
 	
 	function __construct( $post ) {
-		$this->post = new WP_Query( array( 'post_type' => 'post',
-													  'p' => $post ) );
+		$this->post = new WP_Query( array( 'post_type' => 'post', 'p' => $post ) );
 	}
 	
 	function has_thumbnail() {

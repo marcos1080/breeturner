@@ -13,7 +13,7 @@
 	src: url("../fonts/Paid/sanford/Sanford-0103_demo.ttf");
 }
 
-body { 
+body {
 	margin: 0px;
 	padding: 0px;
 	text-align: center;
@@ -37,11 +37,11 @@ body {
 }
 
 @media screen and (min-width: 1030px){
-	body { 
+	body {
 		background-color: transparent;
 	}
 
-	#wrapper { 
+	#wrapper {
 		margin: 80px 0;
 		padding: 0 80px;
 		border: 2px solid rgba(0,0,0,.1);
@@ -71,12 +71,16 @@ body {
 	-webkit-transition-duration: 0.2s;
 	-o-transition-duration: 0.2s;
 	-ms-transition-duration: 0.2s;
-	
+
 	transition-timing-function: ease;
 	-webit-transition-timing-function: ease;
 	-moz-transition-timing-function: ease;
 	-ms-transition-timing-function: ease;
 	-o-transition-timing-function: ease;
+}
+
+#main {
+    margin: 60px 0px;
 }
 
 /* Main link style. */
@@ -143,7 +147,7 @@ ul {
 	-moz-animation: fadein 0.6s 0.6s;
 	-o-animation: fadein 0.6s 0.6s;
 	-ms-animation: fadein 0.6s 0.6s;
-	animation: fadein 0.6s 0.6s; 
+	animation: fadein 0.6s 0.6s;
 	/* fill mode stops the opacity reverting to 0 after animation effect */
 	-webkit-animation-fill-mode:forwards;
 	-moz-animation-fill-mode:forwards;
@@ -190,7 +194,7 @@ ul {
 #sidebar {
 	display: block;
 	height: 100%;
-	width: 300px; 
+	width: 300px;
 	position: fixed;
 	right: -303px;
 	top: 0px;
@@ -202,7 +206,7 @@ ul {
 	-moz-transition: box-shadow 0.3s ease 0s;
 	-o-transition: box-shadow 0.3s ease 0s;
 	-ms-transition: box-shadow 0.3s ease 0s;
-	transition: box-shadow 0.3s ease 0s; 
+	transition: box-shadow 0.3s ease 0s;
 	overflow-y: auto;
 }
 
@@ -241,7 +245,7 @@ ul {
 /*******************************************************************************
 
 	Header Settings
-	
+
 	Includes menu and splash image styling.
 
 *******************************************************************************/
@@ -305,12 +309,12 @@ ul {
 	#header h1 {
 		margin: 10px 0px;
 	}
-	
+
 	#header  .menu-line {
 		display: block;
 		margin-bottom: 0px;
 	}
-	
+
 	.header-image {
 		margin-top: 0px;
 		margin-bottom: 30px;
@@ -323,7 +327,7 @@ ul {
 
 *******************************************************************************/
 
-#content {
+article {
 	margin: 60px auto;
 }
 
@@ -331,7 +335,7 @@ ul {
 	margin-top: 40px;
 }
 
-.post {
+.post-synopsis {
 	opacity: 0;
 }
 
@@ -511,7 +515,7 @@ ul {
 	#content {
 		margin: 20px 5px 40px;
 	}
-	
+
 	#post-wrapper {
 		margin: 20px 0px;
 	}
@@ -549,7 +553,7 @@ ul {
 	.post-nav {
 		display: block;
 	}
-	
+
 	.mobile-post-nav {
 		display: none;
 	}
@@ -627,17 +631,17 @@ ul {
 
 :-moz-placeholder { /* Firefox 18- */
 	font-style: italic;
-   color: red;  
+   color: red;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
 	font-style: italic;
-   color: red;  
+   color: red;
 }
 
-:-ms-input-placeholder {  
+:-ms-input-placeholder {
 	font-style: italic;
-   color: red;  
+   color: red;
 }
 
 /* Error message */
@@ -661,28 +665,28 @@ ul {
 	box-shadow: 0px 0px 3px rgba(0,0,0,.4);
 }
 
-@media screen and (min-width: 800px){	
+@media screen and (min-width: 800px){
 	/* noJS */
 	#contact #contact-left {
 		margin-left: -10px;
 		display: inline-block;
 		width: 350px;
 	}
-	
+
 	#contact #contact-right {
 		float: right;
 		vertical-align: top;
 		width: calc( 100% - 360px );
 	}
-	
+
 	#contact #submit-wide {
 		display: block;
 	}
-	
+
 	#contact #submit-thin {
 		display: none;
 	}
-	
+
 	#contact textarea {
 		margin-bottom: 60px;
 		min-height: 345px;
@@ -757,17 +761,17 @@ form {
 
 #searchinput:-moz-placeholder { /* Firefox 18- */
 	font-style: italic;
-   color: rgba(0,0,0,5);  
+   color: rgba(0,0,0,5);
 }
 
 #searchinput::-moz-placeholder {  /* Firefox 19+ */
 	font-style: italic;
-   color: rgba(0,0,0,5);  
+   color: rgba(0,0,0,5);
 }
 
-#searchinput:-ms-input-placeholder {  
+#searchinput:-ms-input-placeholder {
 	font-style: italic;
-   color: rgba(0,0,0,5);  
+   color: rgba(0,0,0,5);
 }
 
 .searchsubmit {
@@ -799,12 +803,35 @@ form {
 *******************************************************************************/
 
 .post-main {
-	margin: 60px 0px 0px;
+    margin: 60px 0px 0px;
+    text-align: left;
+    line-height: 1.4em;
 }
 
 /* Show border above the footer when comments are disabled. */
 .post-main-nojs {
-	border-bottom: 2px solid rgba(0,0,0,.1);
+    /*border-bottom: 2px solid rgba(0,0,0,.1);*/
+}
+
+.post-main h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 40px;
+}
+
+.post-main ul,
+.post-main li {
+    list-style-type: initial;
+}
+
+.post-main ul {
+    padding-left: 20px;
+    margin: 20px 0px 20px 20px;
+}
+
+.post-main li {
+    line-height: 1.4em;
+    margin-bottom: 10px;
 }
 
 /* Images in post, not featured image. */
@@ -824,27 +851,36 @@ form {
 	max-width: 100%;
 }
 
-.aligncenter {
+.post-main .aligncenter {
 	position: relative;
-	left: 50%;
+        text-align: center;
 	margin-top: 30px;
 	margin-bottom: 30px;
 	max-width: 100%;
-	transform: translateX(-50%);
-	-webkit-transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	-o-transform: translateX(-50%);
+        left: 50%;
+        transform: translateX( -50% );
+        -o-transform: translateX( -50% );
+        -moz-transform: translateX( -50% );
+        -webkit-transform: translateX( -50% );
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.halfwidth {
+    width: 50%;
 }
 
 .post-main img {
-	width: 100%;
+	max-width: 100%;
 	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-bottom: 60px;
 }
 
-.post-main p {
-	/*clear: both;*/
+/*.post-main p,
+.post-main ul {
+	/*clear: both;
 	position: relative;
 	left: 50%;
 	transform: translateX(-50%);
@@ -853,7 +889,7 @@ form {
 	-ms-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	max-width: 900px;
-}
+}*/
 
 .post-main strong {
 	color: rgba(0,0,0,0.8);
@@ -973,7 +1009,7 @@ form {
 	width: 100%;
 }
 
-@media screen and (min-width: 800px){	
+@media screen and (min-width: 800px){
 	/* Comments */
 	.logged-in-as,
 	.form-submit,
@@ -983,45 +1019,53 @@ form {
 		position: absolute;
 		width: 240px;
 	}
-	
+
 	.form-submit {
 		bottom: 0px;
 		margin-bottom: 0px;
 	}
-	
+
 	.comment-notes {
 		padding-bottom: 20px;
-	}	
-	
+	}
+
 	.logged-in-as {
 		top: 0px;
 	}
-	
+
 	.logged-in-as p:first-child {
 		margin-top: 0px;
 	}
-	
+
 	.comment-form-author {
 		top: 20px;
 	}
-	
+
 	.comment-form-email {
 		top: 80px;
 	}
-	
+
 	.comment-form-url {
 		top: 140px;
 	}
-	
+
 	.comment-form-comment {
 		margin: 0px 0px 0px 260px;
 		width: calc(100% - 260px);
 	}
 }
 
+/**
+ *  Audio Post settings
+ */
+#audio-player {
+    clear: both;
+}
+
+
 /*******************************************************************************
 
-	CV page setings.
+	CV page settings.
 
 *******************************************************************************/
 
@@ -1039,11 +1083,12 @@ form {
 
 /* Table Settings */
 .textwidget table tr td {
+	vertical-align: top;
 	text-align: left;
+	height: auto;
 }
 
 .textwidget table tr td:first-child {
-	vertical-align: top;
 	width: 120px;
 }
 
@@ -1091,7 +1136,7 @@ form {
 }
 
 .post-footer {
-	border-top: none !important;
+	/*border-top: none !important;*/
 }
 
 #footer p {

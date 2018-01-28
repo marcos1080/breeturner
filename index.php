@@ -37,16 +37,7 @@
 	if( !is_front_page() ) {
 		echo comments_template();
 	}
-	
-	// Contact form.
-	if( is_front_page() && $_SESSION['javascript'] === true ) : ?>
-		<p>Want to get in touch? <a href="" id="contact" class="fade-speed">Email me</a></p>
-		<div id="contact-form">
-			<div id="contact">
-				<?php echo do_shortcode( '[contact-form-7 id="19" title="Contact Form"]' ); ?>
-			</div>
-		</div>
-	<?php endif; ?>
+	?>
 		</div>
 	</div>
 	<div id="delimiter">
