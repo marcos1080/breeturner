@@ -88,7 +88,7 @@ function setupBlogPostsPage() {
 		console.log(ajaxResponseObject);
 		postsObject = postManagerObject.buildPostsObject( ajaxResponseObject );
 	}
-	console.log(postsObject);
+        
 	// Display the posts.
 	displayManagerObject.displayPosts( postsObject );
 	

@@ -9,11 +9,12 @@
 function ajaxManager() {
 	this.getPosts = function ( request ) {
 		var ajaxResponse = null;
-		
+		var url = ajax_object.ajax_url;
+                
 		console.log('Requesting posts...');
 		jQuery.ajax(
 			// Get the url of the index.php page.
-			location.protocol + '//' + location.host + '/index.php',
+			url,
 			{
 				method: 'POST',
 				data: {
