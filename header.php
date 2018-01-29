@@ -30,6 +30,7 @@
 		<meta charset="UTF-8"></meta>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1"></meta>
 		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/style.css">
+                <script src='https://www.google.com/recaptcha/api.js'></script>
 		<?php if( $mobile == false ) : ?>
 			<!-- Desktop specific style rules -->
 			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/desktop.css">

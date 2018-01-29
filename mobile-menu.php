@@ -10,11 +10,14 @@
 		<li id="mobile-home" data-url="<?php echo get_home_url(); ?>">
 			<a href="<?php echo get_home_url(); ?>"><h2>Home</h2></a>
 		</li>
-		<li id="mobile-words">
-			<a href="<?php echo get_home_url().'/CV/'; ?>"><h2>CV</h2></a>
+		<li id="mobile-cv">
+			<a href="<?php echo get_permalink( get_page_by_path( 'cv' )->ID ); ?>"><h2>CV</h2></a>
+		</li>
+                <li id="mobile-contact">
+			<a href="<?php echo get_permalink( get_page_by_path( 'contact' )->ID ); ?>"><h2>Contact</h2></a>
 		</li>
 		<li id="mobile-words">
-			<a href="<?php echo get_home_url().'/words/'; ?>"><h2>Words</h2></a>
+			<a href="<?php echo get_permalink( get_page_by_path( 'words' )->ID ); ?>"><h2>Words</h2></a>
 		</li>
 		<li>
 		   <form id="searchform" 
@@ -35,7 +38,11 @@
 		</li>
 		<li id="mobile-recent">
 			<a href="" id="recent">RECENT</a>
-		</li><?php /*
+		</li>
+                <li id="mobile-audio">
+			<a class="audio-link" href="<?php echo get_permalink( get_page_by_path( 'words' )->ID ); ?>">AUDIO</a>
+		</li>
+                    <?php /*
 		<li id="mobile-categories">
 			<a href="">CATEGORIES</a>
 			<ul>

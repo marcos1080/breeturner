@@ -1,7 +1,7 @@
 /* Desktop only link effects. */
 a:hover {
-	color: rgba(0,0,0,.9);
-	border-color: rgba(0,0,0,.9);
+	color: rgba(25, 25, 112);
+	border-color: rgba(25, 25, 112);
 }
 
 /* Set the width of the progress indicator */
