@@ -24,7 +24,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html class="background-outer-color">
 	<head>
 		<title>Breanan Turner</title>
 		<meta charset="UTF-8"></meta>
@@ -80,7 +80,7 @@
 		</div>
 		<?php endif; ?>
 		
-		<div id="wrapper">
+		<div id="wrapper" class="background-inner-color">
 			<div id="header">
 				<?php 
 					// Load Mobile navigation.

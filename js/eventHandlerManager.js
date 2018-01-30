@@ -224,12 +224,31 @@ function eventHandlerManager( displayManager ) {
                         }
 		}
 		
+                /*****************************************************************
+			Portfolio desktop side menu handler.
+		*****************************************************************/
+                
+                var scrollTimeout = null;
+                
+                jQuery( window ).on( 'scroll', function() {
+                    if( scrollTimeout == null ) {
+                        scrollTimeout = setTimeout( function() {
+                            if( jQuery( window ).scrollTop() > 250 ) {
+                                jQuery( '.top-bar' ).addClass( 'top-bar-fixed' );
+                            } else {
+                                jQuery( '.top-bar' ).removeClass( 'top-bar-fixed' );
+                            }
+                            scrollTimeout = null;
+                        }, 5 );
+                    }
+                });
+                
 		/*****************************************************************
 			Menu opening handler
 		*****************************************************************/
 		
 		// Used on the desktop version to open sidebar. 
-		jQuery( '.menu-slide-open' ).click(function(event) {
+		jQuery( '.menu-slide-open' ).click( function(event) {
 			event.preventDefault();
 		
 			// Get menu to show.

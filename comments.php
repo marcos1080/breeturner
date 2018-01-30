@@ -23,7 +23,7 @@ if ( post_password_required() ) {
 <div id="comments">
 
 	<?php if ( have_comments() ) : ?>
-	<h2 class="comments-title">
+	<h2 class="comments-title background-inner-color">
 		<a id="comment-toggle" href="#">COMMENTS</a>
 	</h2>
 	<div class="menu-line"></div>

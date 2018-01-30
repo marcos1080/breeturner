@@ -15,6 +15,9 @@ $target_url = get_the_permalink();
       <a href="" class="menu-slide-open" data-menu="archives">ARCHIVES</a>
    </li>
    <li>
+       <a href="https://192.168.100.130/wp-content/uploads/2018/01/BreeTurnerCV2018.pdf">CV</a>
+   </li>
+   <li>
       <form id="searchform" 
                     role="search"  
                     method="post" 

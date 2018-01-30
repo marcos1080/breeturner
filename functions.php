@@ -106,6 +106,13 @@ breeturner_setup();
 
 endif;
 
+// Add class to li elements on the menu for background color setting.
+function add_classes_on_li( $classes, $item, $args ) {
+    $classes[] = 'background-inner-color';
+    return $classes;
+}
+add_filter( 'nav_menu_css_class','add_classes_on_li',1,3 );
+
 // Add custom posts
 include_once 'inc/post-audio.php';
 
